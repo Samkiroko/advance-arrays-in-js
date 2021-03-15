@@ -25,25 +25,25 @@ Hints: Use tools from all lectures in this section so far
 GOOD LUCK
   **/
 
-const checkDogs = function (dogsJulia, dogsKate) {
-  const dogsJuliaCorrected = dogsJulia.slice();
-  dogsJuliaCorrected.splice(0, 1);
-  dogsJuliaCorrected.splice(-2);
-  console.log(dogsJuliaCorrected);
+// const checkDogs = function (dogsJulia, dogsKate) {
+//   const dogsJuliaCorrected = dogsJulia.slice();
+//   dogsJuliaCorrected.splice(0, 1);
+//   dogsJuliaCorrected.splice(-2);
+//   console.log(dogsJuliaCorrected);
 
-  const dogs = dogsJuliaCorrected.concat(dogsKate);
-  console.log(dogs);
+//   const dogs = dogsJuliaCorrected.concat(dogsKate);
+//   console.log(dogs);
 
-  dogs.forEach(function (dog, i) {
-    if (dog >= 3) {
-      console.log(`Dog number ${i + 1} is an adult, and is ${dog} years old`);
-    } else {
-      console.log(`Dog number ${i + 1} is still a puppy`);
-    }
-  });
-};
+//   dogs.forEach(function (dog, i) {
+//     if (dog >= 3) {
+//       console.log(`Dog number ${i + 1} is an adult, and is ${dog} years old`);
+//     } else {
+//       console.log(`Dog number ${i + 1} is still a puppy`);
+//     }
+//   });
+// };
 
-checkDogs([3, 5, 2, 12, 7], [4, 1, 15, 8, 3]);
+// checkDogs([3, 5, 2, 12, 7], [4, 1, 15, 8, 3]);
 
 /*
 Coding Challenge #2
@@ -68,16 +68,16 @@ GOOD LUCK
 
 */
 
-const calcAverageHumanAge = function (ages) {
-  const humanAges = ages.map(age => (age <= 2 ? 2 * age : 16 + age * 4));
-  const adults = humanAges.filter(age => age >= 18);
-  console.log(humanAges);
-  console.log(adults);
-  const average = adults.reduce((acc, age) => acc + age, 0) / adults.length;
-  return average;
-};
+// const calcAverageHumanAge = function (ages) {
+//   const humanAges = ages.map(age => (age <= 2 ? 2 * age : 16 + age * 4));
+//   const adults = humanAges.filter(age => age >= 18);
+//   console.log(humanAges);
+//   console.log(adults);
+//   const average = adults.reduce((acc, age) => acc + age, 0) / adults.length;
+//   return average;
+// };
 
-const avg1 = calcAverageHumanAge([5, 2, 4, 1, 15, 8, 3]);
-const avg2 = calcAverageHumanAge([16, 6, 10, 5, 6, 1, 4]);
+// const avg1 = calcAverageHumanAge([5, 2, 4, 1, 15, 8, 3]);
+// const avg2 = calcAverageHumanAge([16, 6, 10, 5, 6, 1, 4]);
 
-console.log(avg1, avg2);
+// console.log(avg1, avg2);

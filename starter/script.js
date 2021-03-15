@@ -71,7 +71,7 @@ const displayMovements = function (movements) {
           <div class="movements__type movements__type--${type}">${
       i + 1
     } ${type}</div>
-          <div class="movements__value">${mov}</div>
+          <div class="movements__value">${mov}€</div>
         </div>`;
     containerMovements.insertAdjacentHTML('afterbegin', html);
   });
@@ -83,6 +83,25 @@ const calcDisplayBalance = function (movements) {
   labelBalance.textContent = `${balance} EUR`;
 };
 calcDisplayBalance(account1.movements);
+
+const calcDisplaySummary = function (movements) {
+  const incomes = movements
+    .filter(mov => mov > 0)
+    .reduce((acc, mov) => acc + mov, 0);
+  labelSumIn.textContent = `${incomes}€`;
+  const out = movements
+    .filter(mov => mov < 0)
+    .reduce((acc, mov) => acc + mov, 0);
+  labelSumOut.textContent = `${Math.abs(out)}€`;
+
+  const interest = movements
+    .filter(mov => mov > 0)
+    .map(deposit => (deposit * 1.2) / 100)
+    .filter(int => int >= 1)
+    .reduce((acc, int) => acc + int, 0);
+  labelSumInterest.textContent = `${interest}€`;
+};
+calcDisplaySummary(account1.movements);
 
 function createUsernames(accs) {
   accs.forEach(function (acc) {
@@ -173,11 +192,11 @@ const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 /** Data transformation with MAP, Filter and Reduce **/
 
-const eurToUsd = 1.1;
+// const eurToUsd = 1.1;
 
-const movementsUSD = movements.map(mov => mov * eurToUsd);
-console.log(movements);
-console.log(movementsUSD);
+// const movementsUSD = movements.map(mov => mov * eurToUsd);
+// console.log(movements);
+// console.log(movementsUSD);
 
 //  using for
 // const movementsUSDfor = [];
@@ -211,20 +230,27 @@ console.log(withdrawals);
 
 /*Reduce method*/
 
-const balance = movements.reduce((acc, cur) => acc + cur, 0);
-console.log(balance);
+// const balance = movements.reduce((acc, cur) => acc + cur, 0);
+// console.log(balance);
 
-//  using for
-let balance2 = 0;
-for (const mov of movements) {
-  balance2 += mov;
-}
-console.log(balance2);
+// //  using for
+// let balance2 = 0;
+// for (const mov of movements) {
+//   balance2 += mov;
+// }
+// console.log(balance2);
 
-// maximum value
-const max = movements.reduce((acc, mov) => {
-  if (acc > mov) return acc;
-  else return mov;
-}, movements[0]);
+// // maximum value
+// const max = movements.reduce((acc, mov) => {
+//   if (acc > mov) return acc;
+//   else return mov;
+// }, movements[0]);
 
-console.log(max);
+// console.log(max);
+
+const eurToUsd = 1.1;
+const totalDepositsUSD = movements
+  .filter(mov => mov < 0)
+  .map(mov => mov * eurToUsd)
+  .reduce((acc, mov) => acc + mov, 0);
+console.log(totalDepositsUSD);
