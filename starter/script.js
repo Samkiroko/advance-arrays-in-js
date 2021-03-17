@@ -445,3 +445,48 @@ const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 // console.log(y);
 // const z = Array.from({ length: 7 }, (_cur, i) => i + 1);
 // console.log(z);
+
+// // 1
+// const bankDepositSum = accounts
+//   .flatMap(acc => acc.movements)
+//   .filter(mov => mov > 0)
+//   .reduce((sum, cur) => sum + cur, 0);
+// console.log(bankDepositSum);
+
+// // 2
+// const numDeposits1000 = accounts
+//   .flatMap(acc => acc.movements)
+//   .filter(mov => mov >= 1000).length;
+
+// console.log(numDeposits1000);
+
+// // 3
+// const { deposits, withdrawal } = accounts
+//   .flatMap(acc => acc.movements)
+//   .reduce(
+//     (sums, cur) => {
+//       // cur > 0 ? (sums.deposits += cur) : (sums.withdrawal += cur);
+//       sums[cur > 0 ? 'deposits' : 'withdrawal'] += cur;
+//       return sums;
+//     },
+//     {
+//       deposits: 0,
+//       withdrawal: 0,
+//     }
+//   );
+
+// console.log(deposits, withdrawal);
+
+// // 4
+// const convertTitleCase = function (title) {
+//   const capitalize = str => str[0].toUpperCase() + str.slice(1);
+//   const exceptions = ['a', 'an', 'and', 'the', 'but', 'or', 'on', 'in', 'with'];
+//   const titleCase = title
+//     .toLowerCase()
+//     .split(' ')
+//     .map(word => (exceptions.includes(word) ? word : capitalize(word)))
+//     .join(' ');
+//   return capitalize(titleCase);
+// };
+
+// console.log(convertTitleCase('this is a long title not too long'));
